@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://f5t0ofevfme4"
+path="res://.godot/imported/digits.png-c1afe998bd2f2d0d1334cdec9bf42194.fontdata"
+
+[deps]
+
+source_file="res://gui/common/digits.png"
+dest_files=["res://.godot/imported/digits.png-c1afe998bd2f2d0d1334cdec9bf42194.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("48-57")
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=false

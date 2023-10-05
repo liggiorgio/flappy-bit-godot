@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvwkjto3ujjrf"]
+
+[ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_4jiuf"]
+[ext_resource type="Theme" uid="uid://cuoi10cy8jtag" path="res://gui/global_theme.tres" id="1_d70fs"]
+[ext_resource type="Texture2D" uid="uid://baoqqc5kaw3jy" path="res://gui/main_menu/title-70x30.png" id="2_0wckt"]
+[ext_resource type="Texture2D" uid="uid://crs6u1wbhe0f5" path="res://gui/common/icon-start-10x9.png" id="4_teaau"]
+[ext_resource type="PackedScene" uid="uid://mjrmw406uwak" path="res://gui/common/fade.tscn" id="5_bpcvf"]
+[ext_resource type="AudioStream" uid="uid://cgo1j5siqpidc" path="res://sounds/UI_Button.wav" id="6_0ykmj"]
+
+[sub_resource type="Animation" id="Animation_3jnx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8584y"]
+resource_name = "title_bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u8u7"]
+_data = {
+"RESET": SubResource("Animation_3jnx4"),
+"title_bob": SubResource("Animation_8584y")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d70fs")
+script = ExtResource("1_4jiuf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.5
+
+[node name="Title" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0wckt")
+stretch_mode = 3
+
+[node name="TitleBob" type="AnimationPlayer" parent="."]
+autoplay = "title_bob"
+libraries = {
+"": SubResource("AnimationLibrary_8u8u7")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="Button" parent="CenterContainer"]
+layout_mode = 2
+icon = ExtResource("4_teaau")
+icon_alignment = 1
+
+[node name="Fade" parent="." instance=ExtResource("5_bpcvf")]
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0ykmj")
+volume_db = -10.0
+
+[connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_button_pressed"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c57r4kdpvq4fo"]
+
+[ext_resource type="Texture2D" uid="uid://cs4jq7j3wc8kv" path="res://entities/ground/assets/ground-42x8.png" id="1_lj38t"]
+[ext_resource type="Script" path="res://entities/ground/ground.gd" id="1_rubd2"]
+[ext_resource type="Texture2D" uid="uid://0jo42vcmr3ns" path="res://entities/ground/assets/ground-specular-42x3.png" id="2_3t14i"]
+[ext_resource type="Texture2D" uid="uid://b2wqb11vxa0tk" path="res://entities/ground/assets/seawaves-40x4.png" id="2_7i68n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rr81u"]
+size = Vector2(30, 7)
+
+[node name="Ground" type="Area2D"]
+monitoring = false
+script = ExtResource("1_rubd2")
+horizontal_speed = -0.75
+horizontal_limit = -30.0
+horizontal_shift = 30.0
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -1)
+texture = ExtResource("1_lj38t")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 120, 8)
+
+[node name="Seawaves" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 4)
+texture = ExtResource("2_7i68n")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 120, 4)
+
+[node name="Reflection" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 8)
+texture = ExtResource("2_3t14i")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 120, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 3.5)
+shape = SubResource("RectangleShape2D_rr81u")

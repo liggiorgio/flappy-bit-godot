@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://4kiudc8l5et7"]
+
+[ext_resource type="PackedScene" uid="uid://bnsw4breu06s1" path="res://scenes/levels/level_base.tscn" id="1_5okt3"]
+[ext_resource type="PackedScene" uid="uid://cb7grf4rby26b" path="res://entities/pipe/pipe.tscn" id="2_th8jd"]
+[ext_resource type="PackedScene" uid="uid://dlgoysdskf36b" path="res://entities/bird/bird.tscn" id="3_ljfc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i252"]
+size = Vector2(20, 18)
+
+[node name="LevelGame" instance=ExtResource("1_5okt3")]
+
+[node name="Ceiling" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" index="0"]
+position = Vector2(20, -9)
+shape = SubResource("RectangleShape2D_7i252")
+
+[node name="Pipe" parent="." index="4" instance=ExtResource("2_th8jd")]
+position = Vector2(150, 80)
+
+[node name="Pipe2" parent="." index="5" instance=ExtResource("2_th8jd")]
+position = Vector2(200, 100)
+height = 2
+randomize_at_startup = true
+
+[node name="Pipe3" parent="." index="6" instance=ExtResource("2_th8jd")]
+position = Vector2(250, 50)
+height = 7
+randomize_at_startup = true
+
+[node name="Bird" parent="." index="7" instance=ExtResource("3_ljfc0")]
+position = Vector2(20, 60)

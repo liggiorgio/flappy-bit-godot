@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xcedct013bq"]
+
+[ext_resource type="PackedScene" uid="uid://bnsw4breu06s1" path="res://scenes/levels/level_base.tscn" id="1_xgwr0"]
+[ext_resource type="PackedScene" uid="uid://dvwkjto3ujjrf" path="res://gui/main_menu/main_menu.tscn" id="2_jqqt8"]
+
+[node name="Menu" type="Node"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_xgwr0")]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_jqqt8")]

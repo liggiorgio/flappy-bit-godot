@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cuoi10cy8jtag"]
+
+[ext_resource type="Texture2D" uid="uid://7ow25xok28bm" path="res://gui/common/button-9slice-20x20.png" id="1_o00xj"]
+[ext_resource type="Texture2D" uid="uid://vxiaj3p3prkh" path="res://gui/common/button-9slice-pressed-20x20.png" id="2_r1e1b"]
+[ext_resource type="FontFile" uid="uid://f5t0ofevfme4" path="res://gui/common/digits.png" id="3_cw8bu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0ijq"]
+texture = ExtResource("1_o00xj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83ag5"]
+texture = ExtResource("1_o00xj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxsor"]
+texture = ExtResource("1_o00xj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6urma"]
+texture = ExtResource("2_r1e1b")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_773o2"]
+texture = ExtResource("1_o00xj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[resource]
+default_font = ExtResource("3_cw8bu")
+Button/styles/focus = SubResource("StyleBoxTexture_q0ijq")
+Button/styles/hover = SubResource("StyleBoxTexture_83ag5")
+Button/styles/normal = SubResource("StyleBoxTexture_nxsor")
+Button/styles/pressed = SubResource("StyleBoxTexture_6urma")
+HBoxContainer/constants/separation = 0
+Label/fonts/font = ExtResource("3_cw8bu")
+Panel/styles/panel = SubResource("StyleBoxTexture_773o2")
+VBoxContainer/constants/separation = 0

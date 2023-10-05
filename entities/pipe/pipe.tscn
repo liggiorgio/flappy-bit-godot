@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb7grf4rby26b"]
+
+[ext_resource type="Texture2D" uid="uid://b05errshpa5ps" path="res://entities/pipe/assets/pipe-body-14x8.png" id="1_d0pee"]
+[ext_resource type="Script" path="res://entities/pipe/pipe.gd" id="1_pgc7v"]
+[ext_resource type="Texture2D" uid="uid://do50yp7a8wipa" path="res://entities/pipe/assets/pipe-edge-top-18x9.png" id="2_tdyyv"]
+[ext_resource type="Texture2D" uid="uid://8cldnm1ohnfq" path="res://entities/pipe/assets/pipe-edge-bottom-18x9.png" id="3_ebq1g"]
+[ext_resource type="Texture2D" uid="uid://bmqh6cr2pbd7i" path="res://entities/pipe/assets/pipe-body-specular-12x4.png" id="5_kxk3u"]
+[ext_resource type="Texture2D" uid="uid://bp6foo4l5sl8k" path="res://entities/pipe/assets/pipe-edge-specular-16x4.png" id="6_4e60x"]
+[ext_resource type="PackedScene" uid="uid://b4thpqd6y27jl" path="res://entities/score_detector/score_detector.tscn" id="6_d5yyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jos8s"]
+size = Vector2(14, 70)
+
+[node name="Pipe" type="Area2D"]
+position = Vector2(0, 80)
+monitoring = false
+script = ExtResource("1_pgc7v")
+horizontal_speed = -0.75
+horizontal_limit = -10.0
+horizontal_shift = 150.0
+
+[node name="BodyTop" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(1, 4)
+texture = ExtResource("1_d0pee")
+centered = false
+offset = Vector2(-7, -8)
+
+[node name="EdgeTop" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2_tdyyv")
+centered = false
+offset = Vector2(-9, -8)
+
+[node name="EdgeBottom" type="Sprite2D" parent="."]
+texture = ExtResource("3_ebq1g")
+centered = false
+offset = Vector2(-9, -1)
+
+[node name="BodyBottom" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(1, 4)
+texture = ExtResource("1_d0pee")
+centered = false
+offset = Vector2(-7, 0)
+
+[node name="BodyBottomSpecular" type="Sprite2D" parent="."]
+position = Vector2(0, 51)
+scale = Vector2(1, 4)
+texture = ExtResource("5_kxk3u")
+centered = false
+offset = Vector2(-6, 0)
+
+[node name="EdgeBottomSpecular" type="Sprite2D" parent="."]
+position = Vector2(0, 67)
+texture = ExtResource("6_4e60x")
+centered = false
+offset = Vector2(-8, 0)
+
+[node name="EdgeTopSpecular" type="Sprite2D" parent="."]
+position = Vector2(0, 87)
+texture = ExtResource("6_4e60x")
+centered = false
+offset = Vector2(-8, -4)
+flip_v = true
+
+[node name="BodyTopSpecular" type="Sprite2D" parent="EdgeTopSpecular"]
+scale = Vector2(1, 15)
+texture = ExtResource("5_kxk3u")
+centered = false
+offset = Vector2(-6, 0)
+
+[node name="TopCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_jos8s")
+
+[node name="BottomCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_jos8s")
+
+[node name="ScoreDetector" parent="." instance=ExtResource("6_d5yyb")]
+position = Vector2(0, -21)
+monitoring = false
