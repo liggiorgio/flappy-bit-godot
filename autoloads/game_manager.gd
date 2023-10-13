@@ -1,6 +1,7 @@
 extends Node
 
 
+@export var easy_mode := false
 var scene_menu := preload("res://scenes/main.tscn")
 var scene_game := preload("res://scenes/game.tscn")
 var highscore : int
@@ -27,6 +28,7 @@ func save_score() -> void:
 
 func goto_menu() -> void:
 	get_tree().change_scene_to_packed(scene_menu)
+	easy_mode = false
 
 
 func goto_game() -> void:

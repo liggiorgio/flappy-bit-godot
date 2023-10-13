@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlgoysdskf36b"]
+[gd_scene load_steps=15 format=3 uid="uid://dlgoysdskf36b"]
 
 [ext_resource type="Script" path="res://entities/bird/bird.gd" id="1_xwqfc"]
 [ext_resource type="Texture2D" uid="uid://b1tmognte23sh" path="res://entities/bird/assets/bird-flap-1-12x10.png" id="2_o3mda"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://brb2v8v8yda5v" path="res://entities/bird/assets/bird-flap-0-specular-10x4.png" id="7_50xjn"]
 [ext_resource type="AudioStream" uid="uid://bdpxj4mjwbdm4" path="res://sounds/Bird_Flap.wav" id="8_og8e5"]
 [ext_resource type="AudioStream" uid="uid://ivlghcduked3" path="res://sounds/Bird_Score.wav" id="9_q70ng"]
+[ext_resource type="AudioStream" uid="uid://bpq60jpte0vil" path="res://sounds/Bird_Hurt.wav" id="10_3g6ie"]
 [ext_resource type="AudioStream" uid="uid://d1lf4v50cgtoc" path="res://sounds/Bird_Hit.wav" id="10_jpmhg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h6lv0"]
@@ -115,6 +116,10 @@ max_polyphony = 3
 [node name="AudioScore" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_q70ng")
 volume_db = -10.0
+
+[node name="AudioHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_3g6ie")
+volume_db = -20.0
 
 [node name="AudioDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jpmhg")

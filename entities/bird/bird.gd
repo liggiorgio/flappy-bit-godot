@@ -11,11 +11,14 @@ signal pipe_scored
 @onready var sprite_specular := $AnimatedSprite2DSpecular
 @onready var audio_flap := $AudioFlap
 @onready var audio_score := $AudioScore
+@onready var audio_hurt := $AudioHurt
 @onready var audio_death := $AudioDeath
 @onready var _hor_velocity : float = get_parent().get_node("Ground").horizontal_speed
 var _ver_velocity := 0.0
 var _alive := true
 var _boundary_y := 116
+var easy_mode: bool = GameManager.easy_mode
+var em_tolerance := 10.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,6 +67,14 @@ func _on_ground_entered(area: Area2D) -> void:
 		audio_score.play()
 		emit_signal("pipe_scored")
 	else:
+		if area.get_name() in ["Pipe", "Pipe2", "Pipe3"] and easy_mode and _alive:
+			if (area.position.x - position.x < em_tolerance):
+				if (area.position.y - position.y < em_tolerance):
+					flap()
+				else:
+					_ver_velocity = 0.0
+				audio_hurt.play()
+				return
 		emit_signal("bird_collided")
 
 

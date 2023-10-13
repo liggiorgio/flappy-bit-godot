@@ -6,6 +6,7 @@ Yet another Flappy Bird clone, this time made with Godot 4!
 - Infinite obstacles
 - Parallax background & objects
 - High score
+- Easy mode
 
 ## Credits
 
@@ -18,6 +19,7 @@ Yet another Flappy Bird clone, this time made with Godot 4!
 
 - Music: [Lighhearted Loop](https://opengameart.org/content/lighthearted-loop) by _IsharaComix_
 - Bird flapping: [Wing Flap 1](https://freesound.org/people/_stubb/sounds/389634/) by __stubb_
+- Bird hurt: [01680 griffin groan.wav](https://freesound.org/people/Robinhood76/sounds/100800/) by __Robinhood76__
 - Button click: [Button Click 1](https://freesound.org/people/Mellau/sounds/506054/) by _Mellau_
 - Score: [Coin_C_09](https://freesound.org/people/cabled_mess/sounds/350876/) by _cabled_mess_
 - Game over: [Impact-LeatherBelt-001](https://freesound.org/people/DWOBoyle/sounds/144266/) by _DWOBoyle_

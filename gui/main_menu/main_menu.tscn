@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvwkjto3ujjrf"]
+[gd_scene load_steps=11 format=3 uid="uid://dvwkjto3ujjrf"]
 
 [ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_4jiuf"]
 [ext_resource type="Theme" uid="uid://cuoi10cy8jtag" path="res://gui/global_theme.tres" id="1_d70fs"]
 [ext_resource type="Texture2D" uid="uid://baoqqc5kaw3jy" path="res://gui/main_menu/title-70x30.png" id="2_0wckt"]
 [ext_resource type="Texture2D" uid="uid://crs6u1wbhe0f5" path="res://gui/common/icon-start-10x9.png" id="4_teaau"]
+[ext_resource type="Texture2D" uid="uid://llbqy573ytob" path="res://gui/common/icon-heart-10x9.png" id="5_4jm5v"]
 [ext_resource type="PackedScene" uid="uid://mjrmw406uwak" path="res://gui/common/fade.tscn" id="5_bpcvf"]
 [ext_resource type="AudioStream" uid="uid://cgo1j5siqpidc" path="res://sounds/UI_Button.wav" id="6_0ykmj"]
 
@@ -78,7 +79,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8u8u7")
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -87,9 +88,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PlayButton" type="Button" parent="CenterContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/CenterContainer"]
 layout_mode = 2
 icon = ExtResource("4_teaau")
+icon_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EasyPlayButton" type="Button" parent="HBoxContainer/CenterContainer2"]
+layout_mode = 2
+icon = ExtResource("5_4jm5v")
 icon_alignment = 1
 
 [node name="Fade" parent="." instance=ExtResource("5_bpcvf")]
@@ -99,8 +113,13 @@ layout_mode = 1
 wait_time = 0.25
 one_shot = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0ykmj")
 volume_db = -10.0
 
-[connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CenterContainer/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/EasyPlayButton" to="." method="_on_button_pressed"]

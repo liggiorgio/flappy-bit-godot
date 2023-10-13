@@ -6,13 +6,21 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$CenterContainer/PlayButton.pressed.connect($Fade.fade_out)
-	$CenterContainer/PlayButton.pressed.connect($Timer.start)
+	$HBoxContainer/CenterContainer/PlayButton.pressed.connect($Fade.fade_out)
+	$HBoxContainer/CenterContainer/PlayButton.pressed.connect($Timer.start)
+	$HBoxContainer/CenterContainer2/EasyPlayButton.pressed.connect($Fade.fade_out)
+	$HBoxContainer/CenterContainer2/EasyPlayButton.pressed.connect($Timer2.start)
 	$Timer.timeout.connect(_on_timer_timeout)
+	$Timer2.timeout.connect(_on_timer2_timeout)
 	$Fade.fade_in()
 
 
 func _on_timer_timeout() -> void:
+	GameManager.goto_game()
+
+
+func _on_timer2_timeout() -> void:
+	GameManager.easy_mode = true
 	GameManager.goto_game()
 
 
